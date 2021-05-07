@@ -46,16 +46,23 @@ exit_btn = Button(text = "Quit", command=exit)
 exit_btn.grid(row=9, column=6)
 
 def convert_C():
-    if E1:
-        celcius = float(E1.get())
-        fahrenheit = (celcius*9/5)+32
-        result_entry.insert(0, str(fahrenheit))
+    try:
+        if E1:
+            celcius = float(E1.get())
+            fahrenheit = (celcius * 9 / 5) + 32
+            result_entry.insert(0, str(fahrenheit))
+    except ValueError as ex:
+        messagebox.showerror("Error", "Please type a number as temperature")
+
 
 def convert_f():
-    if E2:
-        fahrenheit = float(E2.get())
-        celcius = (fahrenheit-32)*5/9
-        result_entry.insert(0, celcius)
+    try:
+        if E2:
+            fahrenheit = float(E2.get())
+            celcius = (fahrenheit - 32) * 5 / 9
+            result_entry.insert(0, celcius)
+    except ValueError as ex:
+        messagebox.showerror("Error", "Please type a number as temperature")
 
 result_bnt = Button(window, text = 'Convert C-F', command=convert_C)
 result_bnt.grid(row=7, column=2)
