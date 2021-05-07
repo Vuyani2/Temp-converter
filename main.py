@@ -50,7 +50,10 @@ def convert_C():
         if E1:
             celcius = float(E1.get())
             fahrenheit = (celcius * 9 / 5) + 32
+            result_entry.config(state="normal")
+            result_entry.delete(0, END)
             result_entry.insert(0, str(fahrenheit))
+            result_entry.config(state="readonly")
     except ValueError as ex:
         messagebox.showerror("Error", "Please type a number as temperature")
 
@@ -60,7 +63,10 @@ def convert_f():
         if E2:
             fahrenheit = float(E2.get())
             celcius = (fahrenheit - 32) * 5 / 9
+            result_entry.config(state="normal")
+            result_entry.delete(0, END)
             result_entry.insert(0, celcius)
+            result_entry.config(state="readonly")
     except ValueError as ex:
         messagebox.showerror("Error", "Please type a number as temperature")
 
@@ -71,6 +77,7 @@ result_bnt.grid(row=7, column=2)
 result_bnt2 = Button(window, text='Convert F-C', command=convert_f)
 result_bnt2.grid(row=7, column=4)
 result_entry = Entry(window, bg='red')
+result_entry.config(state="readonly")
 result_entry.grid(row=7, column=3)
 
 
